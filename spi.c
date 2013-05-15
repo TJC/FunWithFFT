@@ -159,6 +159,9 @@ void switch_led(int id, int state)
 
 int laser_fd[6] = {0,0,0,0,0,0};
 char laser_gpios[6] = { 88, 89, 11, 81, 80, 79 };
+// Original 5 GPIOs that I've hooked up to NPN transistors
+// on prototype board: { 62, 36, 32, 86, 87 }
+
 void switch_laser(int id, int state)
 {
     char filename[128];

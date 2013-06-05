@@ -87,17 +87,20 @@ void process_audio (short* buf)
     double five_band[5] = { 0, 0, 0, 0, 0 };
     static double led_avg[5] = { 0, 0, 0, 0, 0 };
 
+    // As I understand it, [0] is the DC component, and should
+    // be skipped.
+
     // Now calculate LED version..
-    for (int i=0; i<2; i++) {
+    for (int i=1; i<3; i++) {
         five_band[0] += cabs(out[i]);
     }
-    for (int i=2; i<5; i++) {
+    for (int i=3; i<6; i++) {
         five_band[1] += cabs(out[i]);
     }
-    for (int i=5; i<13; i++) {
+    for (int i=6; i<12; i++) {
         five_band[2] += cabs(out[i]);
     }
-    for (int i=13; i<24; i++) {
+    for (int i=12; i<24; i++) {
         five_band[3] += cabs(out[i]);
     }
     for (int i=24; i<200; i++) {
